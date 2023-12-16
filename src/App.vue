@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <nav style="width: 300px;">
+      <nav id="nv">
         <RouterLink to="/" class="inline_block">Home</RouterLink>
         <RouterLink to="/about" class="inline_block">About</RouterLink>
         <RouterLink to="/login" class="inline_block">Login</RouterLink> <br />
