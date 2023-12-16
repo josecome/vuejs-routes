@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
-
+import { useAuthStore } from '@/stores/auth'
+import { storeToRefs } from 'pinia'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,5 +69,21 @@ const router = createRouter({
     }
   ]
 })
-
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(page => page.meta.requiresAuth)) {
+    const auth_store = useStoreAuth()
+    const {  login_status } = storeToRefs(auth_store)
+    if ( !login_status.value ) { //Is not logged in, go to Login Page
+      next({ 
+        name: 'login' 
+        //path: 'login',
+        //replace: true
+      })
+    } else {
+      next() // go to wherever I'm going
+    }
+  } else {
+    next() // does not require auth, make sure to always call next()!
+  }
+})
 export default router
