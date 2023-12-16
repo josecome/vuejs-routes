@@ -4,3 +4,7 @@
 #nv {
     width: 300px;
 }
+strong {
+    color: blue;
+    font-size: 26px;
+}

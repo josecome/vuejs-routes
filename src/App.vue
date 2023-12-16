@@ -1,5 +1,13 @@
 <script setup>
+import { ref, watch } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+import { useRouter } from 'vue-router'
+const auth = useAuthStore()
+const router = useRouter()
+import { storeToRefs } from 'pinia'
+const { login_status } = storeToRefs(auth)
+watch(login_status, () => login_status.value ? router.push({ name: 'home' }) : '' )
 </script>
 
 <template>
@@ -10,8 +18,10 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav id="nv">
         <RouterLink to="/" class="inline_block">Home</RouterLink>
         <RouterLink to="/about" class="inline_block">About</RouterLink>
-        <RouterLink to="/login" class="inline_block">Login</RouterLink> <br />
-        <span>Login becouse some routes are protected</span>
+        <RouterLink v-show="!auth.login_status" to="/login" class="inline_block">Login</RouterLink>
+        <RouterLink v-show="auth.login_status" to="/logout" class="inline_block">Logout</RouterLink> <br />
+        <span>Login becouse some routes are protected</span><br />
+        <span>Login Status: </span><strong>{{ auth.login_status }}</strong>
       </nav>
     </div>
   </header>

@@ -12,10 +12,13 @@ export const useAuthStore = defineStore('auth', () => {
   const login_status = ref(false)
   
   function login() {
+    console.log('Logged in0!')
     login_status.value = true
+    console.log('Logged in!')
   }
   function logout() {
     login_status.value = false
+    console.log('Logged out!')
   }
 
   return { login_status, login, logout }
