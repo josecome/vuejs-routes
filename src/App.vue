@@ -7,11 +7,11 @@ import { RouterLink, RouterView } from 'vue-router'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+      <nav style="width: 300px;">
+        <RouterLink to="/" class="inline_block">Home</RouterLink>
+        <RouterLink to="/about" class="inline_block">About</RouterLink>
+        <RouterLink to="/login" class="inline_block">Login</RouterLink> <br />
+        <span>Login becouse some routes are protected</span>
       </nav>
     </div>
   </header>
