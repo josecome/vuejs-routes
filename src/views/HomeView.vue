@@ -9,18 +9,16 @@ const route_path = ref(route.path)
 </script>
 <template>
   <main>
-    <h1>Home page</h1><span>Route name: <strong>{{ route_name }}</strong></span>  <span>Route path: <strong>{{ route_path }}</strong></span>  <br />
-    <strong>List of Routes</strong><br />
+    <span>Route name: <strong>{{ route_name }}</strong></span>  <span>Route path: <strong>{{ route_path }}</strong></span>  <br />
+    Parameter: {{ route.params.id }}<br />
+    <h2>Do not require Login Status True</h2>
     <!-- As we have to reload the page, we will not use RouterLink -->
-    <strong>href</strong> <a href="/" class="route">Route path: /</a><br />
-    <strong>href</strong> <a href="/folder" class="route">Route path: /folder</a><br />
-    <strong>href</strong> <a href="/folder/sub_folder" class="route">Route path: /folder/sub_folder</a><br />
-    <strong>href</strong> <a href="/param/1a" class="route">Route path: /param/1a</a> this router accept any parameter (1)<br />
-    <strong>href</strong> <a href="/param/1" class="route">Route path: /param/1</a> this router accept only number parameter (1)<br />
-    <h2>Login System will work for the follow links</h2>
-    <strong>RouterLink</strong> <RouterLink to="/protected_1" class="route">Route path: protected_1</RouterLink><br />
-    <strong>RouterLink</strong> <RouterLink to="/protected_2" class="route">Route path: protected_2</RouterLink><br />
-  </main>
+    <a href="/" class="route">Route path: /</a><br />
+    <a href="/folder" class="route">Route path: /folder</a><br />
+    <a href="/folder/sub_folder" class="route">Route path: /folder/sub_folder</a><br />
+    <a href="/param/1a" class="route">Route path: /param/1a</a> this router accept any parameter (1)<br />
+    <a href="/param2/1" class="route">Route path: /param2/1</a> this router accept only number parameter (1)<br />
+    </main>
 </template>
 <style scoped>
 span {

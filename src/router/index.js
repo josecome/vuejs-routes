@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/LoginView.vue'
-import LogoutView from '../views/LogoutView.vue'
 import { useAuthStore } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
+import HomeView from '../views/HomeView.vue'
+import ProtectedView from '../views/ProtectedView.vue'
+import Protected2View from '../views/Protected2View.vue'
+import LoginView from '../views/LoginView.vue'
+import LogoutView from '../views/LogoutView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,14 +31,14 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/param/:id',
-      name: 'param',
+      path: '/param2/:id(\\d+)', /* Match only number */
+      name: 'param2',
       component: HomeView
     },
     {
       path: '/protected_1',
       name: 'protected_1',
-      component: HomeView,
+      component: ProtectedView,
       meta: {
         requiresAuth: true
       }
@@ -44,7 +46,7 @@ const router = createRouter({
     {
       path: '/protected_2',
       name: 'protected_2',
-      component: HomeView,
+      component: Protected2View,
       meta: {
         requiresAuth: true
       }
@@ -71,13 +73,14 @@ const router = createRouter({
 })
 router.beforeEach((to, from, next) => {
   if (to.matched.some(page => page.meta.requiresAuth)) {
-    const auth_store = useStoreAuth()
+    const auth_store = useAuthStore()
     const {  login_status } = storeToRefs(auth_store)
+    console.log(login_status.value)
     if ( !login_status.value ) { //Is not logged in, go to Login Page
       next({ 
-        name: 'login' 
-        //path: 'login',
-        //replace: true
+        name: 'login',
+        path: '/login',
+        replace: true
       })
     } else {
       next() // go to wherever I'm going

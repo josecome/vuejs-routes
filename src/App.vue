@@ -21,10 +21,13 @@ watch(login_status, () => login_status.value ? router.push({ name: 'home' }) : '
         <RouterLink v-show="!auth.login_status" to="/login" class="inline_block">Login</RouterLink>
         <RouterLink v-show="auth.login_status" to="/logout" class="inline_block">Logout</RouterLink> <br />
         <span>Login becouse some routes are protected</span><br />
-        <span>Login Status: </span><strong>{{ auth.login_status }}</strong>
+        <span>Login Status: </span><strong>{{ auth.login_status }}</strong> 
       </nav>
     </div>
   </header>
+  <h2>Login System will work for the follow links (These page only will be accessed when Login Status is True)</h2>
+  <RouterLink to="/protected_1" class="route">Route path: protected_1</RouterLink><br />
+  <RouterLink to="/protected_2" class="route">Route path: protected_2</RouterLink><br />    
 
   <RouterView />
 </template>
