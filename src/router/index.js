@@ -23,6 +23,32 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/param/:id',
+      name: 'param',
+      component: HomeView
+    },
+    {
+      path: '/param/:id',
+      name: 'param',
+      component: HomeView
+    },
+    {
+      path: '/protected_1',
+      name: 'protected_1',
+      component: HomeView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/protected_2',
+      name: 'protected_2',
+      component: HomeView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/login',
       name: 'login',
       component: LoginView

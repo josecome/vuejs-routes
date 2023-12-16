@@ -15,13 +15,11 @@ const route_path = ref(route.path)
     <strong>href</strong> <a href="/" class="route">Route path: /</a><br />
     <strong>href</strong> <a href="/folder" class="route">Route path: /folder</a><br />
     <strong>href</strong> <a href="/folder/sub_folder" class="route">Route path: /folder/sub_folder</a><br />
-    <strong>href</strong> <a href="/" class="route">Route path: /</a><br />
-    <strong>href</strong> <a href="/" class="route">Route path: /</a><br />
+    <strong>href</strong> <a href="/param/1a" class="route">Route path: /param/1a</a> this router accept any parameter (1)<br />
+    <strong>href</strong> <a href="/param/1" class="route">Route path: /param/1</a> this router accept only number parameter (1)<br />
     <h2>Login System will work for the follow links</h2>
-    <strong>RouterLink</strong> <a href="/" class="route">Route path: /</a><br />
-    <strong>RouterLink</strong> <a href="/" class="route">Route path: /</a><br />
-    <strong>RouterLink</strong> <a href="/" class="route">Route path: /</a><br />
-    <strong>RouterLink</strong> <a href="/" class="route">Route path: /</a><br />
+    <strong>RouterLink</strong> <a href="/protected_1" class="route">Route path: protected_1</a><br />
+    <strong>RouterLink</strong> <a href="/protected_2" class="route">Route path: protected_2</a><br />
   </main>
 </template>
 <style scoped>
